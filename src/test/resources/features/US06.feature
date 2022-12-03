@@ -1,9 +1,8 @@
 @us06
 Feature: Books module
   As a librarian, I should be able to add new books to the library
-
   Scenario Outline: Verify added book is matching with DB
-    Given user login as a librarian
+    Given I login as a librarian
     And   I navigate to "Books" page
     When  the librarian click to add book
     And   the librarian enter book name "<Book Name>"
