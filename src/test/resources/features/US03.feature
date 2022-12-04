@@ -1,3 +1,4 @@
+@smoke @regression
 @us03
 Feature: As a data consumer, I want UI and DB book categories are match.
 

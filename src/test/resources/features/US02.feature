@@ -1,3 +1,4 @@
+@smoke @regression
 @us02
 Feature: As a librarian, I want to know borrowed books number
 

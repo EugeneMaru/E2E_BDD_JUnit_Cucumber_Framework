@@ -1,3 +1,4 @@
+@smoke @regression
 @us05
 Feature: As a librarian, I want to know what genre of books is being borrowed the most
 

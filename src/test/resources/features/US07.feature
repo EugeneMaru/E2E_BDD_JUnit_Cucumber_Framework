@@ -1,3 +1,4 @@
+@smoke @regression
 @us07
 Feature: Books module
   As a student, I should be able to borrow a book
