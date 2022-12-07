@@ -34,6 +34,7 @@ public class ConfigurationReader {
             file.close();
 
         }catch(IOException e){
+            System.out.println("File not found in ConfigurationReader class");
             e.printStackTrace();
         }
     }
