@@ -1,5 +1,6 @@
-@smoke @regression
+@ui
 @us04
+@db
 Feature: As a data consumer, I want UI and DB book information are match.
 
   Scenario: Verify book information with DB
