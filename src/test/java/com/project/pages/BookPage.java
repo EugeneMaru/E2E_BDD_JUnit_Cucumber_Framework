@@ -35,6 +35,8 @@ public class BookPage extends BasePage {
     @FindBy(id = "description")
     public WebElement description;
 
+    @FindBy(id = "tbl_books_info" )
+    public WebElement booksInfo;
 
 
     public WebElement editBook(String book) {

@@ -1,4 +1,8 @@
-select * from books;
+select count(*) as Total_Number_Of_Librarian from users
+where user_group_id = 2 and status = 'Active';
 
-select count(*) as borrowedBooks from users u
-inner join book_borrow b on u.id = b.user_id where is_returned = 0;
+
+
+
+
+
