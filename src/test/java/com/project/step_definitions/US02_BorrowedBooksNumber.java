@@ -19,19 +19,19 @@ public class US02_BorrowedBooksNumber extends BasePage{
 
     String actualBorrowedBooks;
     @Given("user login as a librarian {string} and {string}")
-    public void userLoginAsALibrarianAnd(String email, String password) {
+    public void userLoginAsALibrarianAnd2(String email, String password) {
 
         loginPage.login(email, password);
         BrowserUtils.waitFor(2);
 
     }
     @When("user take borrowed books number")
-    public void user_take_borrowed_books_number() {
+    public void user_take_borrowed_books_number2() {
         actualBorrowedBooks=dashboardPage.borrowedBooksNumber.getText();
         BrowserUtils.waitFor(2);
     }
     @Then("borrowed books number information must match with DB")
-    public void borrowed_books_number_information_must_match_with_db() {
+    public void borrowed_books_number_information_must_match_with_db2() {
         DB_Util.runQuery("select count(*) as borrowedBooks from users u inner join book_borrow b on u.id = b.user_id where is_returned = 0;");
 
         String expectedBorrowedBooks = DB_Util.getFirstRowFirstColumn();
