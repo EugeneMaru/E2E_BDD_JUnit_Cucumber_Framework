@@ -1,10 +1,13 @@
 package com.project.pages;
 
+import com.project.utils.BrowserUtils;
 import com.project.utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 /**
  * parent class for concrete Page object classes
@@ -36,6 +39,11 @@ public abstract  class BasePage {
     @FindBy(linkText = "Log Out")
     public WebElement logOutLink;
 
+    @FindBy(xpath = "//ul[@id='menu_item']//li")
+    public List<WebElement> buttonBar;
+
+    @FindBy(xpath = "//i[@class='fa fa-book']")
+    public WebElement staleElement;
     public void logOut(){
         accountHolderName.click();
         logOutLink.click();
@@ -44,4 +52,21 @@ public abstract  class BasePage {
     public void navigateModule(String moduleName){
         Driver.getDriver().findElement(By.xpath("//span[@class='title'][.='"+moduleName+"']")).click();
     }
+    public void iterItemList(String menuOption) {
+
+        for (int i = 1; i < buttonBar.size(); i++) {
+            BrowserUtils.hover(buttonBar.get(i));
+
+            if (buttonBar.get(i).getText().contains(menuOption)) {
+                BrowserUtils.clickElement(buttonBar.get(i));
+                BrowserUtils.waitFor(3);
+                break;
+            }
+
+        }
+
+    }
+
+
+
 }

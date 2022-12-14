@@ -1,5 +1,6 @@
 package com.project.pages;
 
+import com.project.utils.BrowserUtils;
 import com.project.utils.ConfigurationReader;
 import com.project.utils.Driver;
 import com.project.utils.Driver;
@@ -20,7 +21,7 @@ public class LoginPage {
     @FindBy(id = "inputPassword")
     public WebElement passwordBox;
 
-    @FindBy(tagName = "button")
+    @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
 
 
@@ -40,6 +41,7 @@ public class LoginPage {
 
         emailBox.sendKeys(email);
         passwordBox.sendKeys(password);
+        BrowserUtils.waitFor(2);
         loginButton.click();
 
     }
