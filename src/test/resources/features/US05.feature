@@ -1,4 +1,5 @@
-@us05
+@us05 @ui @db @smoke @regression
+
 Feature: As a librarian, I want to know what genre of books is being borrowed the most
   Scenario: verify the common book genre that’s being borrowed
     Given Establish the database connection

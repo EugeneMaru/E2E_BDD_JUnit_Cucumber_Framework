@@ -1,3 +1,4 @@
+@smoke @regression
 @us06
 Feature: Books module
   As a librarian, I should be able to add new books to the library
