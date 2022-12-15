@@ -30,12 +30,17 @@ public class UsersPage extends BasePage {
     @FindBy(xpath = "//select[@name='tbl_users_length']\n")
     public WebElement NumberOfUserDropdown;
 
+    @FindBy(id = "user_groups")
+    public WebElement userCategory;
+
+    @FindBy(id = "tbl_users_info")
+    public WebElement userInfoCount;
+
 
     public WebElement editUser(String email) {
         String xpath = "//td[.='"+ email+ "']/..//a";
         return Driver.getDriver().findElement(By.xpath(xpath));
     }
-
 
 
 }

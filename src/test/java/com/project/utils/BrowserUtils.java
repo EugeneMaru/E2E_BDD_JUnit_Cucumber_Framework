@@ -496,4 +496,33 @@ public class BrowserUtils {
     public static void waitForPresenceOfElement(By by, long time) {
         new WebDriverWait(Driver.getDriver(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
+    public static void clickElement(WebElement element){
+        waitForVisibility(element,10);
+        waitFor(1);
+        element.click();
+    }
+
+    public static void clickWithSpecificText(List<WebElement> elements,String text){
+        for (WebElement element : elements) {
+            if (element.getText().equals(text)){
+                clickElement(element);
+                break;
+            }
+
+        }
+    }
+    public static boolean isAllSelected(List<WebElement> allFiles){
+
+        for (WebElement file : allFiles) {
+
+            if(!file.isSelected()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
 }
