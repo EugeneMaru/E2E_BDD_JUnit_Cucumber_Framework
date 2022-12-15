@@ -16,7 +16,7 @@ public class Hooks {
     @Before("@ui")
     public void setUp(){
         System.out.println("this is coming from BEFORE");
-        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Driver.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         Driver.getDriver().manage().window().maximize();
         Driver.getDriver().get(ConfigurationReader.getProperty("library_url"));
 
@@ -32,14 +32,14 @@ public class Hooks {
             scenario.attach(screenshot,"image/png","screenshot");
         }
 
-        // Driver.closeDriver();
+        Driver.closeDriver();
 
     }
 
     @Before("@db")
-    public void setUpDB(){
+    public void setupDB(){
         DB_Util.createConnection();
-
+        System.out.println("connecting to database.....");
 
     }
 

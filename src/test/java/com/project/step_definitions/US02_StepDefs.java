@@ -1,5 +1,6 @@
 package com.project.step_definitions;
 
+import com.project.pages.BasePage;
 import com.project.pages.DashBoardPage;
 import com.project.pages.LoginPage;
 import com.project.utils.BrowserUtils;
@@ -9,39 +10,33 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class US02StepDefs  {
+public class US02_StepDefs {
 
-
-    String actualBorrowedBookNumbers;
     LoginPage loginPage = new LoginPage();
     DashBoardPage dashBoardPage = new DashBoardPage();
 
+    String expectedBookBorrowed;
+
     @Given("user login as a {string}")
-    public void user_login_as_a(String userType) {
-        loginPage.login(userType);
-        BrowserUtils.waitFor(3);
+    public void user_login_as_a(String userName) {
+        loginPage.login(userName);
+        BrowserUtils.sleep(3);
 
     }
     @When("user take borrowed books number")
     public void user_take_borrowed_books_number() {
-        actualBorrowedBookNumbers =dashBoardPage.borrowedBooksNumber.getText();
-        System.out.println("actualBorrowedBookNumbers = " + actualBorrowedBookNumbers);
-
+        expectedBookBorrowed = dashBoardPage.borrowedBooksNumber.getText();
 
     }
     @Then("borrowed books number information must match with DB")
     public void borrowed_books_number_information_must_match_with_db() {
+            String query = "select count(*) from book_borrow\n" +
+                    "where is_returned=0";
+        DB_Util.runQuery(query);
 
-        DB_Util.runQuery("select count(*) as borrowedBooks from users u\n" +
-                "inner join book_borrow b on u.id = b.user_id where is_returned = 0");
+        String actualBookBorrowed= DB_Util.getFirstRowFirstColumn();
 
-
-        String expectedBorrowedBooks = DB_Util.getFirstRowFirstColumn();
-
-        Assert.assertEquals(expectedBorrowedBooks,actualBorrowedBookNumbers);
-
-
+        Assert.assertEquals(expectedBookBorrowed, actualBookBorrowed);
 
     }
-
 }
