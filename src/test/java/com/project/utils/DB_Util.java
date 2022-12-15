@@ -43,7 +43,7 @@ public class DB_Util {
     /**
      * Run the sql query provided and return ResultSet object
      *
-     * @param sql the query to run
+     * @param "sql" the query to run
      * @return ResultSet object  that contains data
      */
     public static ResultSet runQuery(String query) {
